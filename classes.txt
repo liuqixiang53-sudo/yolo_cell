@@ -1,0 +1,5 @@
+live_ecoli
+dead_ecoli
+live_saureus
+dead_saureus
+uncertain

@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# 环境
+.env
+.venv/
+env/
+venv/
+
+# IDE
+.vscode/settings.json  # 如果希望共享 VS Code 配置，请注释此行
+
+# YOLO / 模型权重
+*.pt
+*.pth
+*.onnx
+*.engine
+runs/
+datasets/
+weights/
+
+# 数据集
+data/
+*.zip
+*.tar.gz
+*.rar
+
+# 图片/视频输出
+output/
+results/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~

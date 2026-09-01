@@ -1,0 +1,19 @@
+{
+    "python.defaultInterpreterPath": "/home/summer/anaconda3/envs/yolo26/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash",
+            "args": ["--init-file", "/home/summer/anaconda3/envs/yolo26/etc/conda/activate.d/activate.sh"],
+            "icon": "terminal-bash"
+        }
+    },
+    "python.terminal.launchArgs": [],
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/*.pyc": true
+    }
+}
