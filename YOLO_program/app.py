@@ -1,6 +1,6 @@
 """
 细菌显微图片识别与计数前端界面 (Gradio)
-模型: YOLO26m best.pt (live_ecoli / dead_ecoli / live_saureus / dead_saureus / uncertain)
+模型: YOLO26m best.pt (live_ecoli / dead_ecoli / live_saureus / dead_saureus)
 用法: conda activate yolo26 && python app.py  →  http://localhost:7860
 """
 
@@ -18,8 +18,7 @@ from ultralytics import YOLO
 
 SCRIPT_DIR = Path(__file__).parent.resolve()
 MODEL_PATH = (
-    SCRIPT_DIR.parent / "runs" / "detect" / "runs"
-    / "bacteria_detect" / "weights" / "best.pt"
+    SCRIPT_DIR.parent / "runs" / "detect" / "runs" / "bacteria_detect" / "weights" / "best.pt"
 )
 
 CLASS_CN = {
@@ -27,7 +26,6 @@ CLASS_CN = {
     "dead_ecoli": "死大肠杆菌",
     "live_saureus": "活金葡菌",
     "dead_saureus": "死金葡菌",
-    "uncertain": "不确定",
 }
 
 CONF = 0.25
@@ -115,7 +113,7 @@ def detect(img_path):
 with gr.Blocks(title="细菌显微图片识别与计数") as demo:
     gr.Markdown(
         "## 细菌显微图片识别与计数\n"
-        "模型: **YOLO26m** (best.pt) | 类别: 活大肠杆菌 · 死大肠杆菌 · 活金葡菌 · 死金葡菌 · 不确定\n"
+        "模型: **YOLO26m** (best.pt) | 类别: 活大肠杆菌 · 死大肠杆菌 · 活金葡菌 · 死金葡菌\n"
         "上传显微图片后自动识别,可下载标注图与计数 CSV。"
     )
     with gr.Row():

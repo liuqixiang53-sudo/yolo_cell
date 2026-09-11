@@ -1,6 +1,6 @@
 task: detect
 mode: train
-model: yolo26m.pt
+model: /home/summer/桌面/AAAA_To_Jinjin_work/YOLO/yolo26m.pt
 data: /home/summer/桌面/AAAA_To_Jinjin_work/YOLO/dataset/data.yaml
 epochs: 100
 time: null
@@ -12,7 +12,7 @@ save_period: -1
 cache: false
 device: '0'
 workers: 8
-project: runs
+project: /home/summer/桌面/AAAA_To_Jinjin_work/YOLO/runs/detect/runs
 name: bacteria_detect
 exist_ok: true
 pretrained: true

@@ -7,7 +7,7 @@ train: images/train
 val: images/val
 
 # 类别数量
-nc: 5
+nc: 4
 
 # 类别名称 (标签编号从 0 开始)
 names:
@@ -15,11 +15,9 @@ names:
   1: dead_ecoli
   2: live_saureus
   3: dead_saureus
-  4: uncertain
 
 # 类别说明
 # - 0: live_ecoli      - 活大肠杆菌
 # - 1: dead_ecoli      - 死大肠杆菌
 # - 2: live_saureus    - 活金黄色葡萄球菌
 # - 3: dead_saureus    - 死金黄色葡萄球菌
-# - 4: uncertain       - 不确定

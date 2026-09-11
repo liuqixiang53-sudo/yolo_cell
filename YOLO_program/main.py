@@ -14,6 +14,8 @@ from ultralytics import YOLO
 SCRIPT_DIR = Path(__file__).parent.resolve()
 # 构建 data.yaml 的绝对路径
 DATA_YAML = SCRIPT_DIR.parent / "dataset" / "data.yaml"
+# 训练输出的最佳模型权重（绝对路径, 4 类）
+BEST_PT = SCRIPT_DIR.parent / "runs" / "detect" / "runs" / "bacteria_detect" / "weights" / "best.pt"
 
 
 def check_environment():
@@ -38,8 +40,8 @@ def train_model():
     print("开始训练 YOLO26 细菌检测模型")
     print("=" * 50)
     
-    # 加载预训练模型
-    model = YOLO("yolo26m.pt")
+    # 加载预训练模型（绝对路径, 位于项目根目录）
+    model = YOLO(str(SCRIPT_DIR.parent / "yolo26m.pt"))
     
     # 训练配置
     results = model.train(
@@ -49,7 +51,7 @@ def train_model():
         batch=8,                         # 批量大小（小数据集）
         patience=20,                     # 早停耐心值
         save=True,                       # 保存模型
-        project="runs",                  # 输出目录
+        project=str(SCRIPT_DIR.parent / "runs" / "detect" / "runs"),   # 输出目录 YOLO/runs/detect/runs
         name="bacteria_detect",          # 实验名称
         exist_ok=True,                   # 覆盖已有实验
         pretrained=True,                 # 使用预训练权重
@@ -82,7 +84,7 @@ def train_model():
     )
     
     print("\n训练完成!")
-    print(f"最佳模型路径: runs/detect/runs/bacteria_detect/weights/best.pt")
+    print(f"最佳模型路径: {BEST_PT}")
     
     return results
 
@@ -94,7 +96,7 @@ def validate_model():
     print("=" * 50)
     
     # 加载训练好的模型
-    model = YOLO("runs/detect/runs/bacteria_detect/weights/best.pt")
+    model = YOLO(str(BEST_PT))
     
     # 在验证集上评估
     results = model.val(
@@ -121,7 +123,6 @@ def main():
     print("  1: dead_ecoli   - 死大肠杆菌")
     print("  2: live_saureus - 活金黄色葡萄球菌")
     print("  3: dead_saureus - 死金黄色葡萄球菌")
-    print("  4: uncertain    - 不确定")
     print("=" * 50)
     
     # 训练模型
